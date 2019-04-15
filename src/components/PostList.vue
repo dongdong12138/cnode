@@ -3,7 +3,7 @@
     <div class="loading" v-if="isLoading">
       <img src="../assets/loading.gif" title="加载中...">
     </div>
-    <div>
+    <div v-else>
       <ul>
         <!-- 帖子头部 -->
         <li class="topic-header">
@@ -31,7 +31,9 @@
           </span>
 
           <!-- 帖子标题 -->
-          <a class="title" href="#">{{ item.title }}</a>
+          <router-link :to="{name: 'post_content', params: {id: item.id}}">
+            <a class="title" href="#">{{ item.title }}</a>
+          </router-link>
 
           <!-- 最后回复时间 -->
           <a class="last_reply" href="#">
@@ -148,20 +150,20 @@
     margin: 0 1px;
   }
 
-  ul .put_good, ul .put_top {
-    background: #80bd01;
-    padding: 2px 4px;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 3px;
-  }
-  ul .topiclist-tab {
-    background-color: #e5e5e5;
-    color: #999;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-size: 12px;
-  }
+  /*ul .put_good, ul .put_top {*/
+  /*  background: #80bd01;*/
+  /*  padding: 2px 4px;*/
+  /*  color: #fff;*/
+  /*  font-size: 12px;*/
+  /*  border-radius: 3px;*/
+  /*}*/
+  /*ul .topiclist-tab {*/
+  /*  background-color: #e5e5e5;*/
+  /*  color: #999;*/
+  /*  padding: 2px 4px;*/
+  /*  border-radius: 3px;*/
+  /*  font-size: 12px;*/
+  /*}*/
 
   ul .title {
     color: #333;

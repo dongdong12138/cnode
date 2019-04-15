@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="main">
-      <PostList></PostList>
+      <router-view name="main"></router-view>
     </div>
   </div>
 </template>
@@ -35,6 +35,7 @@ export default {
   }
   body {
     background: #e1e1e1;
+    word-break: break-word;
   }
   ul, li {
     list-style: none;
@@ -54,6 +55,21 @@ export default {
     /*min-width: 960px;*/
     margin: 15px auto;
   }
+
+.put_good, .put_top {
+  background: #80bd01;
+  padding: 2px 4px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.topiclist-tab {
+  background-color: #e5e5e5;
+  color: #999;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 12px;
+}
 
 
 </style>
