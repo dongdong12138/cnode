@@ -30,20 +30,19 @@
         <ul>
           <li class="replySec" v-for="(reply, index) in post.replies">
             <div class="replyUp">
-              <router-link :to="{name: 'userinfo', params: {name: reply.author.author_id}}">
+              <router-link :to="{name: 'userinfo', params: {name: reply.author.loginname}}">
                 <img :src="reply.author.avatar_url" alt="">
               </router-link>
-              <router-link>
+              <router-link :to="{name: 'userinfo', params: {name: reply.author.loginname}}">
                 <a class="dark" href="#">{{ reply.author.loginname }}</a>
               </router-link>
               <a class="reply_time" href="#">{{ index+1 }}楼•{{ reply.create_at | formatDate }}</a>
               <div class="up-count">
-                <i class="iconfont icon-zan1"></i>
+                <svg-icon icon-class="zan" />
                 <a class="">{{ reply.ups.length }}</a>
               </div>
             </div>
             <div class="reply_content">
-
               <p v-html="reply.content"></p>
             </div>
 
@@ -53,7 +52,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
   export default {
@@ -68,7 +66,6 @@
       getArticleData() {
         this.$http.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
           .then((res) => {
-            console.log(res.data.data)
             this.isLoading = false
             if (res.data.success === true) {
               this.post = res.data.data
@@ -87,7 +84,7 @@
 </script>
 
 <style>
-  @import url("../assets/font_1142107_iv2cstinr2/iconfont.css");
+  /*@import url("../assets/font_1142107_iv2cstinr2/iconfont.css");*/
   @import url('../assets/markdown-github.css');
   .markdown-text img {
     width: 92% !important;
@@ -109,6 +106,13 @@
   }
   .markdown-text>:first-child, .preview>:first-child {
     margin-top: 0;
+  }
+
+  .icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
   }
 
   .topic_header {
@@ -228,12 +232,12 @@
   .reply .up-count a {
     color: gray;
   }
-  .reply .icon-zan1 {
+  .reply svg {
     cursor: pointer;
     color: #000;
     opacity: .8;
   }
-  .reply .icon-zan1:hover {
+  .reply svg:hover {
     color: #000;
     opacity: 1;
   }

@@ -1,7 +1,9 @@
 <template>
   <div class="header">
     <div class="container">
-      <a href="#"><img src="../assets/cnodejs_light.svg" alt="logo"></a>
+      <router-link :to="{name: 'root'}">
+        <img src="../assets/cnodejs_light.svg" alt="logo">
+      </router-link>
       <form action="">
         <input type="search">
       </form>

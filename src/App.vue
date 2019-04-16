@@ -10,16 +10,19 @@
 <script>
   import Header from './components/Header'
   import PostList from './components/PostList'
+  import UserInfo from './components/UserInfo'
 export default {
   name: 'App',
   components: {
     Header,
-    PostList
+    PostList,
+    UserInfo
   }
 }
 </script>
 
 <style>
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
