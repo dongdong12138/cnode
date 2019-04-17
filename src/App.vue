@@ -2,6 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="main">
+      <router-view name="slideBar"></router-view>
       <router-view name="main"></router-view>
     </div>
   </div>
@@ -16,7 +17,7 @@ export default {
   components: {
     Header,
     PostList,
-    UserInfo
+    UserInfo,
   }
 }
 </script>
@@ -29,7 +30,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   /*text-align: center;*/
   color: #333;
-  height: 2000px;
+  /*height: 2000px;*/
 
 }
   * {

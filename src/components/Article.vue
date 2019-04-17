@@ -79,7 +79,13 @@
     beforeMount() {
       this.isLoading = true
       this.getArticleData()
+    },
+    watch: {
+      '$route'(to, from) {
+        this.getArticleData()
+      }
     }
+
   }
 </script>
 
@@ -115,6 +121,11 @@
     overflow: hidden;
   }
 
+  .article {
+    /*float: left;*/
+    margin-right: 305px;
+    min-width: 655px;
+  }
   .topic_header {
     /*border: 1px solid red;*/
     background-color: #fff;

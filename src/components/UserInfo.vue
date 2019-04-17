@@ -120,6 +120,8 @@
 <script>
   export default {
     name: "UserInfo",
+    components: {
+    },
     data() {
       return {
         isLoading: false,

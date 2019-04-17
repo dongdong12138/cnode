@@ -3,7 +3,7 @@
     <div class="loading" v-if="isLoading">
       <img src="../assets/loading.gif" title="加载中...">
     </div>
-    <div v-else>
+    <div style="background: #fff" v-else>
       <ul>
         <!-- 帖子头部 -->
         <li class="topic-header">
@@ -31,29 +31,43 @@
           </span>
 
           <!-- 帖子标题 -->
-          <router-link :to="{name: 'post_content', params: {id: item.id}}">
+          <router-link :to="{
+            name: 'post_content',
+            params: {
+              id: item.id,
+              name: item.author.loginname
+            }
+          }">
             <a class="title" href="#">{{ item.title }}</a>
           </router-link>
 
           <!-- 最后回复时间 -->
           <a class="last_reply" href="#">
-<!--            <img src="" alt="">-->
             <span>{{ item.last_reply_at | formatDate }}</span>
           </a>
         </li>
       </ul>
+
+      <div>
+        <Pagination @handle="randerList"></Pagination>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import Pagination from './Pagination'
   export default {
     name: "PostList",
     data() {
       return {
         isLoading: false,
-        posts: []
+        posts: [],
+        postPage: 1
       }
+    },
+    components: {
+      Pagination
     },
     beforeMount() {
       this.isLoading = true
@@ -62,14 +76,21 @@
     methods: {
       getData() {
         this.$http.get('https://cnodejs.org/api/v1/topics', {
-          page: 1,
-          limit: 20
+          params: {
+            page: this.postPage,
+            limit: 20
+          }
         }).then((res) => {
           this.isLoading = false
           this.posts = res.data.data
+          console.log(res);
         }).catch((err) => {
           console.log(err);
         })
+      },
+      randerList(value) {
+        this.postPage = value
+        this.getData()
       }
     }
   }
