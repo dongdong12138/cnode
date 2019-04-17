@@ -85,7 +85,6 @@
             if (res.data.success === true) {
               this.userInfo = res.data.data
             }
-            console.log(res.data.data);
           })
           .catch((err) => {
             console.log(err);

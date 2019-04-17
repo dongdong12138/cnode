@@ -83,7 +83,6 @@
         }).then((res) => {
           this.isLoading = false
           this.posts = res.data.data
-          console.log(res);
         }).catch((err) => {
           console.log(err);
         })
@@ -169,21 +168,6 @@
     margin: 0 1px;
   }
 
-  /*ul .put_good, ul .put_top {*/
-  /*  background: #80bd01;*/
-  /*  padding: 2px 4px;*/
-  /*  color: #fff;*/
-  /*  font-size: 12px;*/
-  /*  border-radius: 3px;*/
-  /*}*/
-  /*ul .topiclist-tab {*/
-  /*  background-color: #e5e5e5;*/
-  /*  color: #999;*/
-  /*  padding: 2px 4px;*/
-  /*  border-radius: 3px;*/
-  /*  font-size: 12px;*/
-  /*}*/
-
   ul .title {
     color: #333;
     max-width: 70%;
@@ -193,6 +177,7 @@
     line-height:30px;
     text-overflow: ellipsis;
     margin-left: 4px;
+    overflow: hidden;
   }
   ul .title:hover {
     text-decoration: underline;
